@@ -1,0 +1,343 @@
+/*
+Tuple: an array that takes multiple data types.
+Operations of tuple: push and pop
+It's mutable too!
+*/
+
+// var tuple_name=[1,'2',4.6,[23,34],{1:2,3:[3,4]}]
+
+
+
+
+
+
+
+
+
+// console.clear()
+// var n=Number(prompt("Enter the number of elements : "))
+// var tuple:any[]=[]   //this is how it's different from an array.... it's of type=>any
+// for(let i=0;i<n;i++){
+//     tuple[i]=Number(prompt("Enter the value for index "+(i+1)+" : "))
+// }
+// console.log(tuple.push('wer'))
+// console.log(tuple)
+// console.log(tuple.pop())
+// console.log(tuple)
+
+// // var t=tuple    //both will point to the same reference id 
+// // t[0]=100
+// // console.log(t)
+// // console.log(tuple)
+
+
+// //to empty the tuple
+// tuple=[]
+
+
+
+console.clear()
+// Create a tuple and display the same using functions:
+
+// function create_tuple(){
+//     let n=Number(prompt("Enter the number of elements : "))
+//     let tuple:any[]=[]   
+//     for(let i=0;i<n;i++){
+//         tuple[i]=Number(prompt("Enter the value for index "+(i+1)+" : "))
+//     }
+//     return tuple
+// }
+
+// function display_tuple(tuple_value:any[]){
+//     for(let i=0;i<tuple_value.length;i++){
+//         console.log(tuple_value[i])
+//     }
+// }
+
+
+
+// display_tuple(create_tuple())
+
+
+//Create tuple dynamically and print only the odd terms in them
+// function create_and_print_odd_terms(size:Number)
+// {
+//     let tuple:any[]=[]
+//     for(let i=0;i<size;i++){
+//         tuple.push(Number(prompt("Enter the value : ")))
+//         if(tuple[i]%2!=0){
+//             console.log(tuple[i])
+//         }
+//     }
+// }
+
+// create_and_print_odd_terms(Number(prompt('Enter the size of tuple : ')))
+
+
+
+
+//strings
+
+
+// var str="this is a string value"
+// var str2=new String("this is a string value")
+
+// console.log(str,typeof(str))   //of type string
+// console.log(str2,typeof(str2))  //of type object
+
+// console.log(typeof([1,2,3,4]))
+// console.log(typeof(new Array(1,2,3,4)))           //both gives object type
+
+// var s1='this is a string'
+// var s2="another string"
+// var back_tick_string= `${s1} and ${s2}`
+
+// console.log(back_tick_string)
+
+// var s='this is us'
+// console.log(s[s.length-1])
+// console.log(s.charAt(s.length-1))
+
+
+
+
+/* Input: i liKe proGraMMinG 
+ Ouput: I Like Programming
+// */
+// var str:String='i liKe proGraMMing'
+// var output:String=new String()
+// for(let i=0;i<str.split(' ').length;i++)
+// {
+//     output+= str.split(' ')[i][0].toUpperCase()+str.split(' ')[i].slice(1,).toLowerCase()+" "
+// }
+// console.log(output.trim())
+
+
+
+console.clear()
+//Palindrome
+
+// function check_palindrome(str_value:String):boolean{
+//     for(let i=0;i<Math.floor(str_value.length/2);i++)
+//     {
+//         // console.log(str_value[i],str_value[str_value.length-i-1])
+//         if(str_value[i].toLowerCase()!=str_value[str_value.length-i-1].toLowerCase()){
+//             return false     
+//         }
+//     }
+//     return true
+// }
+
+// console.log(check_palindrome("Dad")?"Palindrome":"Not a Palindrome")
+// console.log(check_palindrome("Malayalam")?"Palindrome":"Not a Palindrome")
+// console.log(check_palindrome("malayalam")?"Palindrome":"Not a Palindrome")
+// console.log(check_palindrome("daddy")?"Palindrome":"Not a Palindrome")
+
+
+//Classes
+
+
+// class Student
+// {
+//     name: String
+//     prn: Number
+
+//     constructor(Sudent_name:String,Student_prn:Number)
+//     {
+//         this.name=Sudent_name
+//         this.prn=Student_prn
+//     }
+    
+//     display():void    //void cuz it doesn't return anything
+//     {
+//         console.log(this.name)
+//         console.log(this.prn)
+//     }
+// }
+
+// var s1=new Student("Messi",10)
+// s1.display()
+// console.log(s1.name)
+// console.log(s1.prn)
+// console.log(s1)
+
+
+//OOP language is lang that supports : Abstraction, Encapsulation, Polymorphism and Inheritance.
+//Inheritance
+
+// class Father 
+// {
+//     father_name:String
+//     constructor(name:String)
+//     {
+//         this.father_name=name
+//     }
+//     display2():void
+//     {
+//         console.log(this.father_name)
+//     }
+// }
+// class Child extends Father
+// {
+//     child_name:String
+//     constructor(name:String,f_name:String)
+//     {
+//         super(f_name)    //calling the constructor of the parent class.
+//         this.child_name=name
+//     }
+//     display():void
+//     {
+//         super.display2()
+//         console.log(this.child_name)
+//         console.log(this.father_name)
+//     }
+
+// }
+
+// var c1=new Child('child1','father1')
+// console.log(c1)
+// c1.display()
+// c1.display2()
+
+
+
+
+
+
+// class Student
+// {
+//     student_prn:Number
+//     student_name:String
+//     student_address:String
+
+//     constructor()
+//     {
+//         this.student_prn=0
+//         this.student_name=''
+//         this.student_address=''
+//     }
+//     set_values()
+//     {
+//         this.student_prn=Number(window.prompt("Enter prn : "))
+//         this.student_name=String(prompt("Enter name : "))
+//         this.student_address=String(prompt("Enter Address : "))
+//     }
+//     display()
+//     {
+//         console.log('Prn : '+this.student_prn)
+//         console.log('Name : '+this.student_name)
+//         console.log('Address : '+this.student_address)
+//     }
+// }
+// var s1=new Student()
+// s1.set_values()
+// s1.display()
+
+
+// class A
+// {
+//     string_value:String
+
+//     constructor()
+//     {
+//         this.string_value=''
+//     }
+//     set_values()
+//     {
+//         this.string_value=String(prompt("Enter string value : "))
+//     }
+//     calculate_no_of_digits()
+//     {   
+//         let count=0
+//         for(let i=0;i<this.string_value.length;i++)
+//         {
+//             // if(Number(this.string_value[i]))
+//             if(Number(this.string_value[i].match(/[0-9]/)))
+//             {
+//                 count+=1
+//                 console.log(this.string_value[i])
+//                 console.log(Number(this.string_value[i]))
+//             }
+//         }
+//         this.display(count)
+//     }
+//     display(no_of_digits:Number)
+//     {
+//         console.log('Number of digits : '+no_of_digits)
+//     }
+// }
+// var ob1=new A()
+// ob1.set_values()
+// ob1.calculate_no_of_digits()
+// var s='amal'
+
+// if(s.length%2==0)
+// {
+//     console.log(s[Math.floor(s.length/2) -1]+s[Math.floor(s.length)/2])
+// }
+// else
+// {
+//     console.log(s[Math.floor(s.length/2)])
+}
+
+
+// class Class_string
+// {
+//     string_value:String
+//     constructor()
+//     {
+//         this.string_value=''
+//     }
+//     set_values()
+//     {
+//         this.string_value=String(prompt("Enter string value : "))
+//     }
+//     display_middle_string():Number
+//     {   
+//         let 
+//         let s=this.string_value.toLowerCase()
+//         if(s.length<26)
+//         {
+//             return 0
+//         }
+//         else
+//         {
+//             for(let i=0;i<s.length;i++)
+//             {
+//                 if(97<Number(s.charCodeAt(i))<123 )  //97 to 123
+//                 {
+                    
+//                 }
+//             }
+//         }
+//     }
+// }
+// var ob1=new Class_string()
+// ob1.set_values()
+// ob1.display_middle_string()
+
+
+var unique_letter:String[]=["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"] 
+// // var s='messi is the messi'
+var s:String='abcdefghijklmnopqrstuvwxyz skldfjklsa kjsafjalfkj'
+var i=0
+
+console.log(s)
+while(unique_letter.length!=0)
+{
+    if(i==s.length){
+        break
+    }
+    if(unique_letter.includes(s[i]))
+    {
+        let index=unique_letter.indexOf(s[i])
+        unique_letter.splice(index,1)
+    }
+    i+=1
+}
+(unique_letter.length==0)?console.log("paragram"):console.log('not paragram')
+
+
+// console.log(unique_letter)
+// console.log(unique_letter.splice(1,1))
+// console.log(unique_letter)

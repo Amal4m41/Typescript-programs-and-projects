@@ -1,0 +1,206 @@
+// const text="Hello World"
+// const res:string="No more resolutions this year, just enjoy the moment!"
+// console.log(text+"\n"+res)
+
+// Syntax for Declaration of variables in TypeScript:
+// var name_of_var:data_type=value
+
+// var num1: number = parseInt(prompt("Enter a num1 value :","0"))    //prompt takes value as string.
+// var num2: number = parseInt(prompt("Enter a num2 value :","0"))
+// var num3: number = parseInt(prompt("Enter a num3 value :","0"))
+
+// var result=add(num1,num2,num3)
+// console.log(result)
+
+// //Function sample
+// function add(n1:number,n2:number,n3:number)
+// {
+//     return n1+n2+n3
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ Operators in TypeScript
+// */
+// var num1:number = Number(prompt('Enter the number : '))
+// console.log(num1)
+// var num2:number = parseInt(prompt('Enter the number : '))
+// console.log(num2)
+// console.log(num1+num2)
+// console.log("string concat"+num2)    //"string concat3" 
+
+// var num:number = 5
+// console.log(++num)     //pre-increment
+// console.log(num++)     //post-increment
+// console.log(num)
+
+// var num:number= 10
+
+// var result = ++num + ++num + num++ * 2 + 5
+//            // 11+12+
+// console.log(result)
+
+
+
+
+
+
+//Write a TypeScript program to accept two numbers. Divide the first number by the second number and calculate the Quotient and Remainder.
+
+// var number1:number=Number(prompt("Enter number1 : "))
+// var number2:number=Number(prompt("Enter number2 : "))
+// if(number2!=0)
+// {
+//     console.log("Quotient : "+number1/number2)
+//     console.log("Remainder : "+number1%number2)
+// }
+// else
+// {
+//     console.log("No dividing by 0 dude")
+// }
+
+
+// console.clear()
+
+
+
+// Write a TypeScript program to accept the Firstname, Middlename, Lastname, Year of Birth, Address of a user. Display it in proper format.
+// Also calculate his age and display his age in this format: 10 days 1 month 20 years.
+
+// var number1:number=Number(prompt("Enter number1 : "))
+// var number2:number=Number(prompt("Enter number2 : "))
+// var fname:string=String(prompt("Enter First name : "))
+// var mname:string=String(prompt("Enter middle name : "))
+// var lname:string=String(prompt("Enter last name : "))
+// var year:number=Number(prompt("Date of birth[day/month/year] : "))
+// var address:string=String(prompt("Enter address : "))
+
+var current_year=2021
+var current_month=8
+var current_day=2
+
+var birth_year=2001
+var birth_month=8
+var birth_day=2
+
+var difference_year=0
+var difference_month=0
+var difference_day=0
+
+var month =[31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+var val=0
+
+// function is_leap_year(yr:number):boolean
+// {
+//     return ( yr%400 == 0) || (( yr%4 == 0 ) && ( yr%100 != 0))
+// }
+
+
+if(current_day<birth_day)
+{   
+    val=(current_month==1 || current_month==12)? 12-current_month+1 : current_month-1
+    
+    difference_day=month[val]-birth_day+current_day
+    difference_month=12-birth_month+current_month-1
+    
+}
+else 
+{
+    difference_day=current_day-birth_day
+    difference_month=12-birth_month+current_month
+}
+
+// if(is_leap_year(birth_year) && birth_month==2 && birth_day<=29)
+// {
+//     difference_day+=1
+// }
+// for(let i=birth_year+1;i<current_year;i++)
+// {
+//     if(is_leap_year(i)){difference_day+=1}
+// }
+// if(is_leap_year(current_year) && (current_month>2 || (current_month==2 && current_day==29)))
+// {
+//     difference_day+=1
+// }
+
+
+difference_year=current_year-birth_year-1+Math.floor(difference_month/12)
+difference_month=difference_month%12
+
+console.log(difference_day+'days '+difference_month+'month '+difference_year+'years')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

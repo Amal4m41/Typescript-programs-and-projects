@@ -1,0 +1,156 @@
+function pick_text():string{     //to pick/choose a random text from the list of text
+    let text_list=["Two things are infinite: the universe and human stupidity; and I'm not sure about the universe.- Albert Einstein","If you tell the truth, you don't have to remember anything.- Mark Twain","Without music, life would be a mistake.- Friedrich Nietzsche","I have nothing to lose but something to gain.- Eminem","The more man learned, the more he realized he did not know.-Dan Brown","Only a life lived for others is a life worthwhile.- Albert Einstein","The courses of true love never did run smooth.- William Shakespeare","My best friend is the one who brings out the best in me.- Henry Ford","Everything has beauty, but not everyone sees it.- Confucius","The only time success comes before work is in the dictionary.- Harvey Spectre","Work is the best antidote to sorrow.- Sherlock Holmes","There is nothing on this earth more to be prized than true friendship.- Thomas Aquinas","The only true wisdom is in knowing you know nothing- Socrates","Education is the most powerful weapon which you can use to change the world.- Nelson Mandela","Believe you can and you're halfway there.- Theodore Roosevelt","The way to get started is to quit talking and begin doing.- Walt Disney","Anyone who has never made a mistake has never tried anything new.- Albert Einstein","It is our choices, that show what we truly are, far more than our abilities.- J.K Rowling","Only put off until tomorrow what you are willing to die having left undone.- Pablo Picasso","Never let the fear of striking out keep you from playing the game.- Babe Ruth","Success is how high you bounce when you hit bottom.- George S.Patton"]
+    return text_list[Math.floor(Math.random()*(text_list.length))]
+}
+
+
+function shuffle(word:string):string{   //to shuffle the text
+    let j:number
+    let temp:string
+    let word_arr:string[]=[...word]  //converting string into an array of characters as string is primitive and immutable.
+    for(let i=0;i<word_arr.length;i++)
+    {
+        j=Math.floor(Math.random()*(word_arr.length))
+        temp=word_arr[i]
+        word_arr[i]=word_arr[j]
+        word_arr[j]=temp        
+    }
+    return word_arr.join('')   //converting array of chars to string
+}
+
+
+function cal_similarity(original_text:string,shuffled_text:string):number{     //calcuate the similarity in shuffled and original text
+    let count:number=0
+    original_text=original_text.replace(/\s+/g,"")
+    shuffled_text=shuffled_text.replace(/\s+/g,"")
+    console.log(original_text,shuffled_text)
+    // if(original_text.length!=shuffled_text.length)
+    // {
+    //     console.log("ERROR")
+    // }
+    for(let i=0;i<shuffled_text.length;i++){
+        if(original_text[i]==shuffled_text[i]){
+            count+=1
+        }
+    }
+    return count/shuffled_text.length
+}
+
+
+function play_game(){
+    let try_again:boolean
+    let win:boolean
+    let choice:number=0
+    var diff_metric:number=0
+    let flag:boolean=false
+    let text:string=''
+    while(1)
+    {
+        try_again=true
+        win=false
+        if(flag===false){
+        choice=Number(prompt("                                              Choose difficulty mode:\n1-Easy\n2-Medium\n3-Hard\n4-Go to menu\nEnter your choice:"))
+        text=''
+        }
+        
+        while(![1,2,3,4].includes(choice)){
+            alert("Entered Wrong choice.\nPlease try again")
+            choice=Number(prompt("                                              Choose difficulty mode:\n1-Easy\n2-Medium\n3-Hard\n4-Go to menu\nEnter your choice:"))
+        }
+        if(choice===4){
+            break //exit from this function
+        }
+
+        
+        let temp_text:string=pick_text()    //choose a random text (if the user chooses to continue the same difficulty level, then no consecutive text must be same)
+        while(temp_text==text)
+        {
+            temp_text=pick_text()
+        }
+        text=temp_text
+
+        if(choice===1){
+            alert("Mode: Easy")
+            diff_metric=3
+
+        }
+        else if(choice===2){
+            alert("Mode: Medium")
+            diff_metric=5
+        }
+        else {
+            alert("Mode: Hard")
+            diff_metric=6
+        }
+
+        let author:string=text.split('-')[1]
+        text=text.split('-')[0]
+        let shuffled_text:string=''
+
+        text = text.replace(/[^\w\s]|_/g, "")   //cleaning the text(replacing all punctuations and symbols with "")
+        for(let i of text.toLowerCase().split(/\s+/)){    //splitting the text using space
+            if(i.length<=diff_metric){
+                shuffled_text+=shuffle(i)
+            }
+            else{
+                shuffled_text+=shuffle(i.substring(0,diff_metric))+i.substring(diff_metric,i.length)
+            }
+            shuffled_text+=" "
+        } 
+        shuffled_text=shuffled_text.substring(0,shuffled_text.length-1)
+        let similarity=(cal_similarity(text,shuffled_text)*100).toString().substring(0,4)
+
+        
+        while(try_again)
+        {
+            let user_input:string=String(prompt(`Decrypt the text:\n${shuffled_text}\n-${author}\nThe text is ${similarity}% similar to the originial text`))
+
+            user_input=user_input.replace(/[^\w\s]|_/g, "")    //cleaning the user input text before checking
+            if(user_input.toLowerCase()==text.toLowerCase()){
+                alert("You got that right, you win!")
+                win=true
+                break
+            }
+            else{
+                try_again=confirm("Oops looks like you have got it wrong...\nWould you like to try again?")     
+            }
+        }
+        if(win==false)
+        {
+            alert(`You lost :(, The actual text was: \n${text}\n-${author}`)
+        }
+
+        flag=confirm("Do you want to play again with the same difficulty?")
+        
+
+    }
+}
+
+
+function main():void{                //the main funtion(Main menu in game)
+    
+    while(1){
+        let choice:Number=Number(prompt("                                               Decrypt Game\n1-Game Info\n2-Play game\n3-Exit\nEnter your choice:"))
+        if(choice===1){
+            alert("Decrypt is a game of decryption. Your goal is to recover a text which is presented to you under a crypted form.\n\
+And you can try several times, until you decode text (or until you abandon).\n\
+                                             For example : \nimTe si a vrire dan koobs aer aobts  --> Time is a river and books are boats.\
+   ")
+        }
+        else if(choice===2){
+            play_game()
+        }
+        else if(choice===3){
+            alert("Thank you")
+            break
+        }
+        else{
+            alert("Entered wrong choice! Please try again")
+        }
+        // console.clear()
+    }
+}
+
+main()
+console.clear()
+

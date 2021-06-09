@@ -1,0 +1,125 @@
+// Write a TypeScript program to accept the Firstname, Middlename, Lastname, Year of Birth, Address of a user. Display it in proper format.
+// Also calculate his age and display his age in this format: 10 days 1 month 20 years.
+
+console.clear()
+var fname:string=String(prompt("Enter First name : "))
+var mname:string=String(prompt("Enter middle name : "))
+var lname:string=String(prompt("Enter last name : "))
+var date_input:string=String(prompt("Date of birth [dd/mm/yyyy] : "))
+var address:string=String(prompt("Enter address : "))
+
+var today=new Date()     //to get the present date
+var current_year=today.getFullYear()
+var current_month=today.getMonth()+1  //starts from 0 (i.e 0-11)
+var current_day=today.getDate()
+//extracting the date from the input date
+var birth_year=Number(date_input.split('/')[2])             //eg: 02/08/2001
+var birth_month=Number(date_input.split('/')[1])
+var birth_day=Number(date_input.split('/')[0])
+
+var difference_year=0
+var difference_month=0
+var difference_day=0
+
+var month =[31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+var val=0
+
+// function is_leap_year(yr:number):boolean
+// {
+//     return ( yr%400 == 0) || (( yr%4 == 0 ) && ( yr%100 != 0))
+// }
+
+if(current_day<birth_day)
+{   
+    val=(current_month==1 || current_month==12)? 12-current_month+1 : current_month-1
+    
+    difference_day=month[val]-birth_day+current_day
+    difference_month=12-birth_month+current_month-1   
+}
+else 
+{
+    difference_day=current_day-birth_day
+    difference_month=12-birth_month+current_month
+}
+
+// if(is_leap_year(birth_year) && birth_month==2 && birth_day<=29)
+// {
+//     difference_day+=1
+// }
+// for(let i=birth_year+1;i<current_year;i++)
+// {
+//     if(is_leap_year(i)){difference_day+=1}
+// }
+// if(is_leap_year(current_year) && (current_month>2 || (current_month==2 && current_day==29)))
+// {
+//     difference_day+=1
+// }
+
+difference_year=current_year-birth_year-1+Math.floor(difference_month/12)
+difference_month=difference_month%12
+
+console.log('First Name : '+fname)
+console.log('Middle Name : '+mname)
+console.log('Last Name : '+lname)
+console.log('Address : '+address)
+console.log(difference_day+' days   '+difference_month+' month   '+difference_year+' years')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
